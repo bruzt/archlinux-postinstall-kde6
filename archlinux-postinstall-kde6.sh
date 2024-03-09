@@ -153,7 +153,10 @@ function tesThings {
 
     [Timer]
     OnCalendar=daily
-    Persistent=true" > /usr/lib/systemd/system/update-keyring.timer
+    Persistent=true
+
+    [Install]
+    WantedBy=multi-user.target" > /usr/lib/systemd/system/update-keyring.timer
 
   echo "[Unit]
     After=network-online.target nss-lookup.target
@@ -167,5 +170,13 @@ function tesThings {
     RestartSec=1minute" > /usr/lib/systemd/system/update-keyring.service
 
   echo "#!/usr/bin/bash
+
       pacman -Sy --needed --noconfirm archlinux-keyring" > /usr/bin/update-keyring
+
+      chmod +x /usr/lib/systemd/system/update-keyring.service
+      chmod +x /usr/bin/update-keyring
+
+      systemctl daemon-reload
+
+      systemctl enable update-keyring.timer
 }
