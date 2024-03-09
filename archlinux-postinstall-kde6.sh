@@ -173,7 +173,6 @@ function tesThings {
 
       pacman -Sy --needed --noconfirm archlinux-keyring" > /usr/bin/update-keyring
 
-      chmod +x /usr/lib/systemd/system/update-keyring.service
       chmod +x /usr/bin/update-keyring
 
       systemctl daemon-reload
