@@ -171,11 +171,11 @@ function tesThings {
 
   echo "#!/usr/bin/bash
 
-      pacman -Sy --needed --noconfirm archlinux-keyring" > /usr/bin/update-keyring
+    pacman -Sy --needed --noconfirm archlinux-keyring" > /usr/bin/update-keyring
 
-      chmod +x /usr/bin/update-keyring
+  chmod +x /usr/bin/update-keyring
 
-      systemctl daemon-reload
+  systemctl daemon-reload
 
-      systemctl enable update-keyring.timer
+  systemctl enable update-keyring.timer
 }
