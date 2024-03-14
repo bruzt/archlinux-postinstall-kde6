@@ -27,7 +27,7 @@ function archKde6 {
 
   pacman -S --noconfirm --needed discover packagekit-qt6 fwupd colord-kde kimageformats kdeplasma-addons
   pacman -S --noconfirm --needed flatpak xdg-desktop-portal-kde xdg-desktop-portal-gtk
-  pacman -S --noconfirm --needed partitionmanager filelight kolourpaint kcalc haruna ttf-droid noto-fonts-emoji net-tools docker go
+  pacman -S --noconfirm --needed partitionmanager filelight kolourpaint kcalc haruna ttf-droid noto-fonts-emoji net-tools
   pacman -S --noconfirm --needed plasma-firewall ufw
   #pacman -S --noconfirm --needed timeshift
 
@@ -35,7 +35,7 @@ function archKde6 {
   systemctl enable cups
   ufw allow 631/tcp
 
-  pacman -S --noconfirm --needed base-devel git
+  pacman -S --noconfirm --needed base-devel git go
   pacman -S --noconfirm --needed chromium qbittorrent
   pacman -S --noconfirm --needed ark p7zip unarchiver
   pacman -S --noconfirm --needed gwenview qt6-imageformats
@@ -59,7 +59,7 @@ function archKde6 {
   flatpak install -y com.leinardi.gst io.github.thetumultuousunicornofdarkness.cpu-x
 
   ### DEV
-  #pacman -S --noconfirm --needed code
+  #pacman -S --noconfirm --needed code docker
   #flatpak install -y com.google.AndroidStudio rest.insomnia.Insomnia
   #flatpak install -y com.unity.UnityHub org.freedesktop.Sdk.Extension.dotnet org.freedesktop.Sdk.Extension.mono6
 
