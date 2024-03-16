@@ -51,7 +51,7 @@ function archKde6 {
 
   sudo -u $SUDO_USER yay -S --noconfirm --needed dropbox
 
-  pacman -S --noconfirm --needed steam-native-runtime gamemode lib32-gamemode lutris
+  pacman -S --noconfirm --needed steam-native-runtime gamemode lib32-gamemode lutris ### https://github.com/lutris/docs/blob/master/WineDependencies.md
   pacman -S --noconfirm --needed goverlay mangohud lib32-mangohud # vkbasalt lib32-vkbasalt
 
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
