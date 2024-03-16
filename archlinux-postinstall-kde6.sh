@@ -161,7 +161,6 @@ function configZram {
     systemctl start systemd-zram-setup@zram0.service
 }
 
-
 function configKeyringAutoUpdate {
   echo "[Unit]
     Description=Update archlinux-keyring regularly
