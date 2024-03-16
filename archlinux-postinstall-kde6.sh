@@ -58,6 +58,8 @@ function archKde6 {
   flatpak install -y com.github.tchx84.Flatseal org.onlyoffice.desktopeditors com.github.wwmm.easyeffects org.kde.kdenlive com.heroicgameslauncher.hgl net.davidotek.pupgui2 com.obsproject.Studio #org.videolan.VLC
   flatpak install -y com.leinardi.gst io.github.thetumultuousunicornofdarkness.cpu-x
 
+  sudo bash -c 'echo "vm.max_map_count=16777216" >> /etc/sysctl.d/99-sysctl.conf'
+
   ### DEV
   #pacman -S --noconfirm --needed code docker
   #flatpak install -y com.google.AndroidStudio rest.insomnia.Insomnia
@@ -144,10 +146,23 @@ function archKde6 {
   reboot
 }
 
-archKde6
+function configZram {
+
+    pacman -S zram-generator
+
+    bash -c 'echo "[zram0]
+        zram-size = ram * 2
+        compression-algorithm = zstd
+        swap-priority = 100
+        fs-type = swap" > /etc/systemd/zram-generator.conf'
+
+    systemctl daemon-reload
+
+    systemctl start systemd-zram-setup@zram0.service
+}
 
 
-function tesThings {
+function configKeyringAutoUpdate {
   echo "[Unit]
     Description=Update archlinux-keyring regularly
 
@@ -179,3 +194,5 @@ function tesThings {
 
   systemctl enable update-keyring.timer
 }
+
+archKde6
