@@ -58,6 +58,7 @@ function archKde6 {
   flatpak install -y com.github.tchx84.Flatseal org.onlyoffice.desktopeditors com.github.wwmm.easyeffects org.kde.kdenlive com.heroicgameslauncher.hgl net.davidotek.pupgui2 com.obsproject.Studio #org.videolan.VLC
   flatpak install -y com.leinardi.gst io.github.thetumultuousunicornofdarkness.cpu-x
 
+  ### sysctl -a | grep -E "vm.max_map_count"
   bash -c 'echo "vm.max_map_count=16777216" >> /etc/sysctl.d/99-sysctl.conf'
 
   ### DEV
@@ -148,7 +149,7 @@ function archKde6 {
 
 function configZram {
 
-    pacman -S zram-generator
+    pacman -S --needed --noconfirm zram-generator
 
     bash -c 'echo "[zram0]
         zram-size = ram * 2
