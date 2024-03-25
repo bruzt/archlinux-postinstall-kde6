@@ -183,7 +183,7 @@ function configZram {
 
 function configKeyringAutoUpdate {
   echo "[Unit]
-    Description=Update archlinux-keyring regularly
+    Description=Update archlinux-keyring daily
 
     [Timer]
     OnCalendar=daily
@@ -195,7 +195,7 @@ function configKeyringAutoUpdate {
   echo "[Unit]
     After=network-online.target nss-lookup.target
     ConditionFileIsExecutable=/usr/bin/update-keyring
-    Description=Update archlinux-keyring regularly
+    Description=Update archlinux-keyring
     Wants=network-online.target
 
     [Service]
