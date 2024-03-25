@@ -152,14 +152,33 @@ function configZram {
     pacman -S --needed --noconfirm zram-generator
 
     bash -c 'echo "[zram0]
-        zram-size = ram * 2
+        zram-size = ram
         compression-algorithm = zstd
         swap-priority = 100
         fs-type = swap" > /etc/systemd/zram-generator.conf'
 
+    bash -c 'echo "[Unit]
+    Description=Disables zswap on system startup
+
+    [Timer]
+    OnStartupSec=1s
+
+    [Install]
+    WantedBy=graphical.target" > /usr/lib/systemd/system/disable-zswap.timer'
+
+    DISABLEZSWAP='"echo 0 > /sys/module/zswap/parameters/enabled"'
+
+    bash -c "echo '[Unit]
+    Description=Disables zswap on system startup
+
+    [Service]
+    ExecStart=bash -c ${DISABLEZSWAP}' > /usr/lib/systemd/system/disable-zswap.service"
+
     systemctl daemon-reload
 
     systemctl start systemd-zram-setup@zram0.service
+
+    systemctl enable disable-zswap.timer
 }
 
 function configKeyringAutoUpdate {
