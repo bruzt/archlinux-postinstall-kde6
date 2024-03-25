@@ -158,21 +158,21 @@ function configZram {
         fs-type = swap" > /etc/systemd/zram-generator.conf'
 
     bash -c 'echo "[Unit]
-    Description=Disables zswap on system startup
+        Description=Disables zswap on system startup
 
-    [Timer]
-    OnStartupSec=1s
+        [Timer]
+        OnStartupSec=1s
 
-    [Install]
-    WantedBy=graphical.target" > /usr/lib/systemd/system/disable-zswap.timer'
+        [Install]
+        WantedBy=graphical.target" > /usr/lib/systemd/system/disable-zswap.timer'
 
     DISABLEZSWAP='"echo 0 > /sys/module/zswap/parameters/enabled"'
 
     bash -c "echo '[Unit]
-    Description=Disables zswap on system startup
+        Description=Disables zswap on system startup
 
-    [Service]
-    ExecStart=bash -c ${DISABLEZSWAP}' > /usr/lib/systemd/system/disable-zswap.service"
+        [Service]
+        ExecStart=bash -c ${DISABLEZSWAP}' > /usr/lib/systemd/system/disable-zswap.service"
 
     systemctl daemon-reload
 
