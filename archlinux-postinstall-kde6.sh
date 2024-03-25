@@ -182,7 +182,7 @@ function configZram {
 }
 
 function configKeyringAutoUpdate {
-  echo "[Unit]
+  bash -c 'echo "[Unit]
     Description=Update archlinux-keyring daily
 
     [Timer]
@@ -190,9 +190,10 @@ function configKeyringAutoUpdate {
     Persistent=true
 
     [Install]
-    WantedBy=multi-user.target" > /usr/lib/systemd/system/update-keyring.timer
+    WantedBy=graphical.target" > /usr/lib/systemd/system/update-keyring.timer'
+  ### WantedBy=multi-user.target
 
-  echo "[Unit]
+  bash -c 'echo "[Unit]
     After=network-online.target nss-lookup.target
     ConditionFileIsExecutable=/usr/bin/update-keyring
     Description=Update archlinux-keyring
@@ -201,11 +202,11 @@ function configKeyringAutoUpdate {
     [Service]
     ExecStart=/usr/bin/update-keyring
     Restart=on-failure
-    RestartSec=1minute" > /usr/lib/systemd/system/update-keyring.service
+    RestartSec=1minute" > /usr/lib/systemd/system/update-keyring.service'
 
-  echo "#!/usr/bin/bash
+  bash -c 'echo "#!/usr/bin/bash
 
-    pacman -Sy --needed --noconfirm archlinux-keyring" > /usr/bin/update-keyring
+    pacman -Sy --needed --noconfirm archlinux-keyring" > /usr/bin/update-keyring'
 
   chmod +x /usr/bin/update-keyring
 
