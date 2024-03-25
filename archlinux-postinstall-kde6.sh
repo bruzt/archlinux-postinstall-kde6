@@ -211,6 +211,8 @@ function configKeyringAutoUpdate {
 
   systemctl daemon-reload
 
+  # systemd-analyze verify update-keyring.timer
+
   systemctl enable update-keyring.timer
 }
 
