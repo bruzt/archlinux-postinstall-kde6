@@ -196,20 +196,13 @@ function configKeyringAutoUpdate {
 
   bash -c 'echo "[Unit]
     After=network-online.target nss-lookup.target
-    ConditionFileIsExecutable=/usr/bin/update-keyring
     Description=Update archlinux-keyring
     Wants=network-online.target
 
     [Service]
-    ExecStart=/usr/bin/update-keyring
+    ExecStart=pacman -Sy --needed --noconfirm archlinux-keyring
     Restart=on-failure
     RestartSec=1minute" > /usr/lib/systemd/system/update-keyring.service'
-
-  bash -c 'echo "#!/usr/bin/bash
-
-    pacman -Sy --needed --noconfirm archlinux-keyring" > /usr/bin/update-keyring'
-
-  chmod +x /usr/bin/update-keyring
 
   systemctl daemon-reload
 
