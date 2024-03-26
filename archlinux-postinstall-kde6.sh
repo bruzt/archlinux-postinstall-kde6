@@ -67,30 +67,30 @@ function archKde6 {
   #flatpak install -y com.unity.UnityHub org.freedesktop.Sdk.Extension.dotnet org.freedesktop.Sdk.Extension.mono6
 
   echo "[Desktop Entry]
-  Name=Trash
-  Name[pt_BR]=Lixeira
-  Comment=Contains deleted files
-  Comment[pt_BR]=Contém arquivos deletados
-  Icon=user-trash-full
-  EmptyIcon=user-trash
-  Type=Link
-  URL=trash:/" > /home/$SUDO_USER/trash.desktop
+      Name=Trash
+      Name[pt_BR]=Lixeira
+      Comment=Contains deleted files
+      Comment[pt_BR]=Contém arquivos deletados
+      Icon=user-trash-full
+      EmptyIcon=user-trash
+      Type=Link
+      URL=trash:/" > /home/$SUDO_USER/trash.desktop
 
   echo '# Add in ~/.bashrc or ~/.bash_profile
-  function parse_git_branch () {
-    git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/(\1)/"
-  }
+      function parse_git_branch () {
+        git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/(\1)/"
+      }
 
-  RED="\[\033[01;31m\]"
-  YELLOW="\[\033[01;33m\]"
-  GREEN="\[\033[01;32m\]"
-  BLUE="\[\033[01;34m\]"
-  NO_COLOR="\[\033[00m\]"
+      RED="\[\033[01;31m\]"
+      YELLOW="\[\033[01;33m\]"
+      GREEN="\[\033[01;32m\]"
+      BLUE="\[\033[01;34m\]"
+      NO_COLOR="\[\033[00m\]"
 
-  # without host
-  # PS1="$GREEN\u$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
-  # with host
-  PS1="$GREEN\u@\h$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "' >> /home/$SUDO_USER/.bashrc
+      # without host
+      # PS1="$GREEN\u$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
+      # with host
+      PS1="$GREEN\u@\h$NO_COLOR:$BLUE\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "' >> /home/$SUDO_USER/.bashrc
 
 
   ## FILESHARING
@@ -121,7 +121,7 @@ function archKde6 {
     usershare path = /var/lib/samba/usershares
     printing = CUPS
 
-  [printers]
+    [printers]
     comment = All Printers
     browseable = no
     path = /var/tmp
@@ -130,7 +130,7 @@ function archKde6 {
     read only = yes
     create mask = 0700
 
-  [print$]
+    [print$]
     comment = Printer Drivers
     path = /var/lib/samba/printers
     browseable = yes
@@ -182,6 +182,7 @@ function configZram {
 }
 
 function configKeyringAutoUpdate {
+
   bash -c 'echo "[Unit]
     Description=Update archlinux-keyring daily
 
