@@ -27,7 +27,7 @@ function archKde6 {
 
   pacman -S --noconfirm --needed discover packagekit-qt6 fwupd colord-kde kimageformats kdeplasma-addons
   pacman -S --noconfirm --needed flatpak xdg-desktop-portal-kde xdg-desktop-portal-gtk
-  pacman -S --noconfirm --needed partitionmanager filelight kolourpaint kcalc haruna ttf-droid noto-fonts-emoji net-tools
+  pacman -S --noconfirm --needed partitionmanager filelight kolourpaint kcalc haruna kamoso ttf-droid noto-fonts-emoji net-tools
   pacman -S --noconfirm --needed plasma-firewall ufw
   #pacman -S --noconfirm --needed timeshift
 
