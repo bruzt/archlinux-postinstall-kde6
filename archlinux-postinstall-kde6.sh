@@ -12,14 +12,14 @@ function archKde6 {
   #sed -i 's/\#\[multilib\]/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist/g' /etc/pacman.conf
 
   pacman -Sy --noconfirm --needed archlinux-keyring
-  yes | LC_ALL=en_US.UTF-8 pacman -Syu
-  pacman -Syu --noconfirm
+  #yes | LC_ALL=en_US.UTF-8 pacman -Syu
+  #pacman -Syu --noconfirm
 
   if [[ $(glxinfo | grep -E "OpenGL vendor|OpenGL renderer") == *"AMD"* ]]; then
-    pacman -S --noconfirm --needed vulkan-radeon lib32-vulkan-radeon mesa-utils vulkan-tools #adriconf
+    pacman -S --noconfirm --needed vulkan-radeon lib32-vulkan-radeon mesa-utils vulkan-tools libva-mesa-driver mesa-vdpau #adriconf
 
   elif [[ $(glxinfo | grep -E "OpenGL vendor|OpenGL renderer") == *"Intel"* ]]; then
-    pacman -S --noconfirm --needed vulkan-intel lib32-vulkan-intel mesa-utils vulkan-tools #adriconf
+    pacman -S --noconfirm --needed vulkan-intel lib32-vulkan-intel mesa-utils vulkan-tools intel-media-driver #adriconf
 
   elif [[ $(glxinfo | grep -E "OpenGL vendor|OpenGL renderer") == *"NVIDIA"* ]]; then
     pacman -S --noconfirm --needed nvidia nvidia-utils lib32-nvidia-utils nvidia-settings
