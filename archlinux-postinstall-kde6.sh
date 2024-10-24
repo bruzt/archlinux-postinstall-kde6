@@ -2,7 +2,7 @@
 
 #set -e # exit script on error
 
-if (( $EUID != 0 )); then
+if [ -z $SUDO_USER ]; then
     echo "Please run this script with sudo"
     exit
 fi
@@ -53,6 +53,7 @@ function archKde6 {
 
   pacman -S --noconfirm --needed steam-native-runtime gamemode lib32-gamemode lutris ### https://github.com/lutris/docs/blob/master/WineDependencies.md
   pacman -S --noconfirm --needed goverlay mangohud lib32-mangohud # vkbasalt lib32-vkbasalt
+  usermod -aG gamemode $SUDO_USER
 
   ### sysctl -a | grep -E "vm.max_map_count"
   bash -c 'echo "vm.max_map_count=16777216" >> /etc/sysctl.d/99-sysctl.conf'
