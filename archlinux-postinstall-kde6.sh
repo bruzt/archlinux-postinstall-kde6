@@ -16,7 +16,7 @@ function archKde6 {
   #pacman -Syu --noconfirm
 
   if [[ $(glxinfo | grep -E "OpenGL vendor|OpenGL renderer") == *"AMD"* ]]; then
-    pacman -S --noconfirm --needed vulkan-radeon lib32-vulkan-radeon mesa-utils vulkan-tools libva-mesa-driver mesa-vdpau #adriconf
+    pacman -S --noconfirm --needed vulkan-radeon lib32-vulkan-radeon mesa-utils vulkan-tools #adriconf
 
   elif [[ $(glxinfo | grep -E "OpenGL vendor|OpenGL renderer") == *"Intel"* ]]; then
     pacman -S --noconfirm --needed vulkan-intel lib32-vulkan-intel mesa-utils vulkan-tools intel-media-driver #adriconf
