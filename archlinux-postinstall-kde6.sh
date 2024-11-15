@@ -59,7 +59,8 @@ function archKde6 {
   bash -c 'echo "vm.max_map_count=16777216" >> /etc/sysctl.d/99-sysctl.conf'
 
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  flatpak install -y com.github.tchx84.Flatseal org.kde.kalk org.onlyoffice.desktopeditors com.github.wwmm.easyeffects org.kde.kdenlive com.heroicgameslauncher.hgl net.davidotek.pupgui2 com.obsproject.Studio com.dropbox.Client it.mijorus.gearlever #org.videolan.VLC
+  flatpak install -y com.github.tchx84.Flatseal org.kde.kalk org.onlyoffice.desktopeditors com.github.wwmm.easyeffects com.dropbox.Client #org.videolan.VLC
+  flatpak install -y com.heroicgameslauncher.hgl net.davidotek.pupgui2 org.kde.kdenlive com.obsproject.Studio
   flatpak install -y com.leinardi.gst io.github.thetumultuousunicornofdarkness.cpu-x
 
   ### DEV
