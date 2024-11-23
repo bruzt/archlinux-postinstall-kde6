@@ -51,12 +51,12 @@ function archKde6 {
 
   #sudo -u $SUDO_USER yay -S --noconfirm --needed dropbox
 
-  pacman -S --noconfirm --needed steam-native-runtime gamemode lib32-gamemode lutris ### https://github.com/lutris/docs/blob/master/WineDependencies.md
+  pacman -S --noconfirm --needed steam-native-runtime gamemode lib32-gamemode lutris scx-scheds ### https://github.com/lutris/docs/blob/master/WineDependencies.md
   pacman -S --noconfirm --needed goverlay mangohud lib32-mangohud # vkbasalt lib32-vkbasalt
   usermod -aG gamemode $SUDO_USER
 
   ### sysctl -a | grep -E "vm.max_map_count"
-  bash -c 'echo "vm.max_map_count=16777216" >> /etc/sysctl.d/99-sysctl.conf'
+  #bash -c 'echo "vm.max_map_count=16777216" >> /etc/sysctl.d/99-sysctl.conf'
 
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install -y com.github.tchx84.Flatseal org.kde.kalk org.onlyoffice.desktopeditors com.github.wwmm.easyeffects com.dropbox.Client #org.videolan.VLC
