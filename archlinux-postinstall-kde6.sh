@@ -51,6 +51,8 @@ function archKde6 {
 
   #sudo -u $SUDO_USER yay -S --noconfirm --needed dropbox
 
+  ## GAMING
+  pacman -S --noconfirm --needed wine-staging wine-gecko wine-mono winetricks
   pacman -S --noconfirm --needed steam-native-runtime gamemode lib32-gamemode lutris scx-scheds ### https://github.com/lutris/docs/blob/master/WineDependencies.md
   pacman -S --noconfirm --needed goverlay mangohud lib32-mangohud # vkbasalt lib32-vkbasalt
   usermod -aG gamemode $SUDO_USER
